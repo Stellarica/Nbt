@@ -1,6 +1,6 @@
 @file:Suppress("FINAL_UPPER_BOUND", "unused")
 
-package net.silkmc.silk.nbt
+package net.stellarica.nbt
 
 import net.minecraft.nbt.CompoundTag
 

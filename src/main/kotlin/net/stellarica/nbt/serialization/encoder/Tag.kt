@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt.serialization.encoder
+package net.stellarica.nbt.serialization.encoder
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationStrategy
@@ -11,9 +11,16 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.ListTag
 import net.minecraft.nbt.StringTag
 import net.minecraft.nbt.Tag
-import net.silkmc.silk.nbt.serialization.Nbt
+import net.stellarica.nbt.serialization.Nbt
 import net.silkmc.silk.nbt.serialization.internal.*
-import net.silkmc.silk.nbt.toNbt
+import net.stellarica.nbt.serialization.internal.byteArraySerializer
+import net.stellarica.nbt.serialization.internal.byteSerializer
+import net.stellarica.nbt.serialization.internal.elementSerializer
+import net.stellarica.nbt.serialization.internal.intArraySerializer
+import net.stellarica.nbt.serialization.internal.intSerializer
+import net.stellarica.nbt.serialization.internal.longArraySerializer
+import net.stellarica.nbt.serialization.internal.longSerializer
+import net.stellarica.nbt.toNbt
 
 @ExperimentalSerializationApi
 abstract class NbtTagEncoder(protected val nbt: Nbt) : AbstractEncoder() {

@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt.serialization.internal
+package net.stellarica.nbt.serialization.internal
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.serializer

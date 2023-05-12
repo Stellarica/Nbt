@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt
+package net.stellarica.nbt
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
@@ -10,10 +10,10 @@ import io.kotest.property.checkAll
 import io.kotest.property.exhaustive.enum
 import io.kotest.property.forAll
 import net.minecraft.nbt.ListTag
-import net.silkmc.silk.nbt.dsl.nbtCompound
-import net.silkmc.silk.nbt.serialization.Nbt
-import net.silkmc.silk.nbt.serialization.UnknownKeyException
-import net.silkmc.silk.nbt.serialization.decodeFromNbtElement
+import net.stellarica.nbt.dsl.nbtCompound
+import net.stellarica.nbt.serialization.Nbt
+import net.stellarica.nbt.serialization.UnknownKeyException
+import net.stellarica.nbt.serialization.decodeFromNbtElement
 
 class NbtDecodingTest : StringSpec({
     "compound should decode to class" {

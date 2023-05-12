@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt
+package net.stellarica.nbt
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldBeEmpty
@@ -11,8 +11,8 @@ import io.kotest.property.arbitrary.*
 import io.kotest.property.checkAll
 import io.kotest.property.exhaustive.enum
 import net.minecraft.nbt.*
-import net.silkmc.silk.nbt.serialization.Nbt
-import net.silkmc.silk.nbt.serialization.encodeToNbtElement
+import net.stellarica.nbt.serialization.Nbt
+import net.stellarica.nbt.serialization.encodeToNbtElement
 
 class NbtEncodingTest : StringSpec({
     "class should encode to compound" {

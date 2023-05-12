@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt
+package net.stellarica.nbt
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

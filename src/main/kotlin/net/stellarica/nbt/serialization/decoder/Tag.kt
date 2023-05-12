@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt.serialization.decoder
+package net.stellarica.nbt.serialization.decoder
 
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -11,9 +11,16 @@ import kotlinx.serialization.encoding.CompositeDecoder
 import kotlinx.serialization.modules.EmptySerializersModule
 import kotlinx.serialization.modules.SerializersModule
 import net.minecraft.nbt.*
-import net.silkmc.silk.nbt.serialization.Nbt
-import net.silkmc.silk.nbt.serialization.UnknownKeyException
+import net.stellarica.nbt.serialization.Nbt
+import net.stellarica.nbt.serialization.UnknownKeyException
 import net.silkmc.silk.nbt.serialization.internal.*
+import net.stellarica.nbt.serialization.internal.byteArraySerializer
+import net.stellarica.nbt.serialization.internal.byteSerializer
+import net.stellarica.nbt.serialization.internal.elementSerializer
+import net.stellarica.nbt.serialization.internal.intArraySerializer
+import net.stellarica.nbt.serialization.internal.intSerializer
+import net.stellarica.nbt.serialization.internal.longArraySerializer
+import net.stellarica.nbt.serialization.internal.longSerializer
 
 @ExperimentalSerializationApi
 abstract class NbtTagDecoder(protected val nbt: Nbt) : AbstractDecoder() {
@@ -102,8 +109,8 @@ abstract class NbtTagDecoder(protected val nbt: Nbt) : AbstractDecoder() {
 
 @ExperimentalSerializationApi
 class NbtRootDecoder(
-    nbt: Nbt,
-    private val element: Tag
+	nbt: Nbt,
+	private val element: Tag
 ) : NbtTagDecoder(nbt) {
     override fun next() = element
 
@@ -112,8 +119,8 @@ class NbtRootDecoder(
 
 @ExperimentalSerializationApi
 class NbtCompoundDecoder(
-    nbt: Nbt,
-    private val compound: CompoundTag
+	nbt: Nbt,
+	private val compound: CompoundTag
 ) : NbtTagDecoder(nbt) {
     private lateinit var element: Tag
     private var idx = 0
@@ -147,8 +154,8 @@ class NbtCompoundDecoder(
 
 @ExperimentalSerializationApi
 class NbtListDecoder(
-    nbt: Nbt,
-    private val list: ListTag
+	nbt: Nbt,
+	private val list: ListTag
 ) : NbtTagDecoder(nbt) {
     private val elements = list.listIterator()
 

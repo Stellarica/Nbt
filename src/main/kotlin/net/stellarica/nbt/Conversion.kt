@@ -1,4 +1,4 @@
-package net.silkmc.silk.nbt
+package net.stellarica.nbt
 
 import net.minecraft.nbt.*
 import java.util.*

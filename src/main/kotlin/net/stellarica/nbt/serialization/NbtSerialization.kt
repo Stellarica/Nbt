@@ -1,11 +1,11 @@
-package net.silkmc.silk.nbt.serialization
+package net.stellarica.nbt.serialization
 
 import kotlinx.serialization.*
 import kotlinx.serialization.modules.EmptySerializersModule
 import kotlinx.serialization.modules.SerializersModule
 import net.minecraft.nbt.Tag
-import net.silkmc.silk.nbt.serialization.decoder.NbtRootDecoder
-import net.silkmc.silk.nbt.serialization.encoder.NbtRootEncoder
+import net.stellarica.nbt.serialization.decoder.NbtRootDecoder
+import net.stellarica.nbt.serialization.encoder.NbtRootEncoder
 
 /**
  * Instances of this class can encode values to [Tag]s and decode
@@ -34,7 +34,7 @@ data class NbtConfig(
  * Creates a new instace of [Nbt]. This function allows you to customize the
  * behaviour of NBT serialization and deserialization.
  */
-inline fun Nbt(from: Nbt = Nbt.Default, build: NbtBuilder.() -> Unit): Nbt =
+inline fun Nbt(from: Nbt = Nbt, build: NbtBuilder.() -> Unit): Nbt =
     NbtBuilder(from).apply(build).build()
 
 class NbtBuilder(from: Nbt) {
