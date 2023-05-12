@@ -5,13 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TestClass(
-    val x: Int,
-    val y: Long,
-    val name: String,
-    val stringList: List<String>,
-    val longSet: Set<Long>,
-    val inner: InnerTestClass,
-    val nullable: Short?,
+	val x: Int,
+	val y: Long,
+	val name: String,
+	val stringList: List<String>,
+	val longSet: Set<Long>,
+	val inner: InnerTestClass,
+	val nullable: Short?,
 )
 
 @Serializable
@@ -21,12 +21,12 @@ data class InnerTestClass(val test: Boolean)
 data class TestClassWithDefault(val one: Int = 1, val tru: Boolean = true)
 
 enum class TestEnum {
-    VARIANT_1, VARIANT_2, LastVariant,
+	VARIANT_1, VARIANT_2, LastVariant,
 }
 
 @Serializable
 sealed class SealedBase {
-    abstract val baseVal: Float
+	abstract val baseVal: Float
 }
 
 @Serializable

@@ -1,8 +1,12 @@
 package net.stellarica.nbt.serialization
 
-import kotlinx.serialization.*
+import kotlinx.serialization.DeserializationStrategy
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.modules.EmptySerializersModule
 import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.serializer
 import net.minecraft.nbt.Tag
 import net.stellarica.nbt.serialization.decoder.NbtRootDecoder
 import net.stellarica.nbt.serialization.encoder.NbtRootEncoder
@@ -13,21 +17,21 @@ import net.stellarica.nbt.serialization.encoder.NbtRootEncoder
  */
 @OptIn(ExperimentalSerializationApi::class)
 sealed class Nbt(val config: NbtConfig, val serializersModule: SerializersModule) {
-    companion object Default : Nbt(NbtConfig(), EmptySerializersModule)
+	companion object Default : Nbt(NbtConfig(), EmptySerializersModule())
 
-    fun <T> encodeToNbtElement(serializer: SerializationStrategy<T>, value: T): Tag =
-        NbtRootEncoder(this).apply { encodeSerializableValue(serializer, value) }.element
-            ?: throw SerializationException("Serializer did not encode any element")
+	fun <T> encodeToNbtElement(serializer: SerializationStrategy<T>, value: T): Tag =
+		NbtRootEncoder(this).apply { encodeSerializableValue(serializer, value) }.element
+			?: throw SerializationException("Serializer did not encode any element")
 
-    fun <T> decodeFromNbtElement(deserializer: DeserializationStrategy<T>, element: Tag): T =
-        NbtRootDecoder(this, element).decodeSerializableValue(deserializer)
+	fun <T> decodeFromNbtElement(deserializer: DeserializationStrategy<T>, element: Tag): T =
+		NbtRootDecoder(this, element).decodeSerializableValue(deserializer)
 }
 
 private class NbtImpl(config: NbtConfig, serializersModule: SerializersModule) : Nbt(config, serializersModule)
 
 data class NbtConfig(
-    val encodeDefaults: Boolean = false,
-    val ignoreUnknownKeys: Boolean = false
+	val encodeDefaults: Boolean = false,
+	val ignoreUnknownKeys: Boolean = false
 )
 
 /**
@@ -35,15 +39,15 @@ data class NbtConfig(
  * behaviour of NBT serialization and deserialization.
  */
 inline fun Nbt(from: Nbt = Nbt, build: NbtBuilder.() -> Unit): Nbt =
-    NbtBuilder(from).apply(build).build()
+	NbtBuilder(from).apply(build).build()
 
 class NbtBuilder(from: Nbt) {
-    var encodeDefaults = from.config.encodeDefaults
-    var ignoreUnknownKeys = from.config.ignoreUnknownKeys
+	var encodeDefaults = from.config.encodeDefaults
+	var ignoreUnknownKeys = from.config.ignoreUnknownKeys
 
-    var serializersModule = from.serializersModule
+	var serializersModule = from.serializersModule
 
-    fun build(): Nbt = NbtImpl(NbtConfig(encodeDefaults, ignoreUnknownKeys), serializersModule)
+	fun build(): Nbt = NbtImpl(NbtConfig(encodeDefaults, ignoreUnknownKeys), serializersModule)
 }
 
 /**
@@ -52,7 +56,7 @@ class NbtBuilder(from: Nbt) {
  * function. Otherwise, an [net.minecraft.nbt.CompoundTag] will be created.
  */
 inline fun <reified T> Nbt.encodeToNbtElement(value: T) =
-    encodeToNbtElement(serializer(), value)
+	encodeToNbtElement(serializer(), value)
 
 /**
  * Encodes the given [element] to an instance of the class [T].
@@ -61,7 +65,7 @@ inline fun <reified T> Nbt.encodeToNbtElement(value: T) =
  * will be thrown.
  */
 inline fun <reified T> Nbt.decodeFromNbtElement(element: Tag) =
-    decodeFromNbtElement(serializer<T>(), element)
+	decodeFromNbtElement(serializer<T>(), element)
 
 /**
  * Thrown if [NbtConfig.ignoreUnknownKeys] is set to false and an unknown key

@@ -1,7 +1,17 @@
 package net.stellarica.nbt
 
-import net.minecraft.nbt.*
-import java.util.*
+import net.minecraft.nbt.ByteArrayTag
+import net.minecraft.nbt.ByteTag
+import net.minecraft.nbt.DoubleTag
+import net.minecraft.nbt.FloatTag
+import net.minecraft.nbt.IntArrayTag
+import net.minecraft.nbt.IntTag
+import net.minecraft.nbt.LongArrayTag
+import net.minecraft.nbt.LongTag
+import net.minecraft.nbt.NbtUtils
+import net.minecraft.nbt.ShortTag
+import net.minecraft.nbt.StringTag
+import java.util.UUID
 
 fun Boolean.toNbt(): ByteTag = ByteTag.valueOf(this)
 fun Byte.toNbt(): ByteTag = ByteTag.valueOf(this)

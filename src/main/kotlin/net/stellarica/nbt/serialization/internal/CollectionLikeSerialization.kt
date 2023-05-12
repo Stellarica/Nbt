@@ -15,26 +15,26 @@ internal val intSerializer = serializer<Int>()
 internal val longSerializer = serializer<Long>()
 
 private val collectionLikeSerializerClass: KClass<*> = run {
-    for (name in arrayOf(
-        "kotlinx.serialization.internal.CollectionLikeSerializer",
-        "kotlinx.serialization.internal.ListLikeSerializer"
-    )) {
-        try {
-            return@run Class.forName(name).kotlin
-        } catch (_: ClassNotFoundException) {
-        }
-    }
-    error("silk-nbt is incompatible with this version of kotlinx.serialization. Please report this issue together with the fabric-language-kotlin version used.")
+	for (name in arrayOf(
+		"kotlinx.serialization.internal.CollectionLikeSerializer",
+		"kotlinx.serialization.internal.ListLikeSerializer"
+	)) {
+		try {
+			return@run Class.forName(name).kotlin
+		} catch (_: ClassNotFoundException) {
+		}
+	}
+	error("silk-nbt is incompatible with this version of kotlinx.serialization. Please report this issue together with the fabric-language-kotlin version used.")
 }
 
 @Suppress("unchecked_cast")
 private val collectionLikeElementSerializerField = collectionLikeSerializerClass.declaredMemberProperties
-    .first { it.name == "elementSerializer" }
-    .apply { isAccessible = true } as KProperty1<Any, KSerializer<*>>
+	.first { it.name == "elementSerializer" }
+	.apply { isAccessible = true } as KProperty1<Any, KSerializer<*>>
 
 internal val Any.elementSerializer: KSerializer<*>?
-    get() = if (collectionLikeSerializerClass.isInstance(this)) {
-        collectionLikeElementSerializerField.get(this)
-    } else {
-        null
-    }
+	get() = if (collectionLikeSerializerClass.isInstance(this)) {
+		collectionLikeElementSerializerField.get(this)
+	} else {
+		null
+	}
