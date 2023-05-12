@@ -13,7 +13,6 @@ import kotlinx.serialization.modules.SerializersModule
 import net.minecraft.nbt.*
 import net.stellarica.nbt.serialization.Nbt
 import net.stellarica.nbt.serialization.UnknownKeyException
-import net.silkmc.silk.nbt.serialization.internal.*
 import net.stellarica.nbt.serialization.internal.byteArraySerializer
 import net.stellarica.nbt.serialization.internal.byteSerializer
 import net.stellarica.nbt.serialization.internal.elementSerializer

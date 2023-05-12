@@ -12,7 +12,6 @@ import net.minecraft.nbt.ListTag
 import net.minecraft.nbt.StringTag
 import net.minecraft.nbt.Tag
 import net.stellarica.nbt.serialization.Nbt
-import net.silkmc.silk.nbt.serialization.internal.*
 import net.stellarica.nbt.serialization.internal.byteArraySerializer
 import net.stellarica.nbt.serialization.internal.byteSerializer
 import net.stellarica.nbt.serialization.internal.elementSerializer
