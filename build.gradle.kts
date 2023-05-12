@@ -1,22 +1,15 @@
 plugins {
-    idea
-    `dokka-script-root`
+    kotlin("jvm")
+    kotlin("plugin.serialization")
+    id("io.papermc.paperweight.userdev")
 }
 
 repositories {
     mavenCentral()
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
-allprojects {
-    group = "net.silkmc"
-    version = "1.9.7"
-    if (this.name.startsWith("silk")) {
-        description = "Silk is a Minecraft API for Kotlin"
-    }
-}
-
-idea {
-    module {
-        excludeDirs.add(file("docs"))
-    }
+dependencies {
+    paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:${property("minecraft_version")}-R0.1-SNAPSHOT")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${property("kx_ser_version")}")
 }

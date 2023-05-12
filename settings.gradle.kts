@@ -1,24 +1,18 @@
-val projectName = "silk"
+val projectName = "Nbt"
 rootProject.name = projectName
 
 pluginManagement {
     repositories {
         maven("https://maven.fabricmc.net/")
         gradlePluginPortal()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    }
+
+    plugins {
+        val kotlin_version: String by settings
+        kotlin("jvm") version kotlin_version
+        kotlin("plugin.serialization") version kotlin_version
+
+        val paperweight_version: String by settings
+        id("io.papermc.paperweight.userdev") version paperweight_version
     }
 }
-
-include("$projectName-all")
-
-include("$projectName-commands")
-include("$projectName-core")
-include("$projectName-game")
-include("$projectName-igui")
-include("$projectName-nbt")
-include("$projectName-network")
-include("$projectName-persistence")
-
-//include("$projectName-paper")
-
-include("$projectName-testmod")
