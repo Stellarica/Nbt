@@ -1,0 +1,11 @@
+# Gradle
+.gradle/
+build/
+
+# Editors (add yours if applicable)
+.idea/
+.vscode/
+
+# Fabric
+run/
+logs/

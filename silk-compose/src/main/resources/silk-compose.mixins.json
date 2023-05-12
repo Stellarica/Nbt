@@ -1,0 +1,9 @@
+{
+  "package": "net.silkmc.silk.compose.mixin",
+  "required": true,
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MaterialColorAccessor",
+    "ServerGamePacketListenerImplMixin"
+  ]
+}
